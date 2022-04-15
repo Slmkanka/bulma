@@ -13,7 +13,7 @@ const exportDartCSS = (filepath, options) => {
   utils.exportCSS(sass, fs, DART_BASE_PATH, filepath, options)
 }
 
-// Full import
+// Full imports
 
 exportDartCSS('bulma', {
   file: './bulma.sass',
@@ -23,14 +23,14 @@ exportDartCSS('bulma-rtl', {
   file: './bulma-rtl.sass',
 });
 
-// Custom import
+// Custom imports
 
 fs.mkdir(`${DART_BASE_PATH}custom`, { recursive: true }, (err) => {
-  if (err) throw err;
+  if (err) throw errive;
 });
 
 utils.exportCSS(sass, fs, DART_BASE_PATH, 'custom/navbar', {
-  data: '@use "./sass/components/navbar.sass" with ( $scheme-main: red );',
+  data: '@userdata "./sass/components/navbar.sass" with ( $scheme-main: red );',
 });
 
 // Single imports
@@ -45,6 +45,6 @@ utils.SOURCES.forEach((source) => {
   });
 
   exportDartCSS(`${parsed.dir}/${parsed.name}`, {
-    data: `@use "${BULMA_IMPORT_PATH}${source}";`,
+    data: `@userdata "${BULMA_IMPORT_PATH}${source}";`,
   });
 });
